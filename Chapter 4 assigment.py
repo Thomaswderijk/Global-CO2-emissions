@@ -25,7 +25,8 @@ correct_table.columns = [
 # create the relevant dataframe with slicing
 countries = correct_table.loc[3:, ["Country", "CO1990", "CO2005", "CO2017"]]
 
-# Graph 1: 5 biggest CO2 emitters
+'''Graph 1:
+5 biggest CO2 emitters'''
 
 
 # Selecting the five biggest CO2 emitters in a dataframe
@@ -33,7 +34,7 @@ countries = correct_table.loc[3:, ["Country", "CO1990", "CO2005", "CO2017"]]
 
 # Making a new variable for this graph's dataframe so we can sort it
 # without changing the original dataframe 'countries'
-graph_frame = correct_table.loc[3:, ["Country", "CO1990", "CO2005", "CO2017"]]
+graph_frame = countries
 
 # Sorting the new dataframe
 graph_frame.sort_values(by="CO1990", inplace=True, ascending=False)
@@ -61,12 +62,13 @@ ax.set_ylabel("CO2 Emitted in Mt", size=15)
 plt.legend(loc="center left", bbox_to_anchor=(1, 0.8))
 plt.grid()
 
-# Graph 2: 3 biggest reductions and 3 smallest reductions
+''' Graph 2:
+3 biggest reductions and 3 smallest reductions'''
 
 # Making a new variable for this graph's dataframe so we can sort it
 # without changing the original dataframe 'countries'
 
-graph2_frame = correct_table.loc[3:, ["Country", "CO1990", "CO2005", "CO2017"]]
+graph2_frame = countries
 
 # Adding the required columns to the dataframe
 graph2_frame["Max1990"] = 100
@@ -146,8 +148,6 @@ for index, row in graph3_frame_final.iterrows():
     plt.plot(x, y, label=row[0], marker="o")
 
 # Editing the graph to make it readable
-# The value for outlier "Greenland" is so big,
-# the chart would have to be VERY long to make this readable
 
 ax.set_title(
     "Changes in relative CO2 emissions Top 3 and Bottom 3. (Min. 5Mt emission)",
